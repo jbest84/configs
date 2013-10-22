@@ -8,6 +8,13 @@ set encoding=utf-8
 set fileencoding=utf-8
 set t_Co=256
 
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    "   " work properly when Vim is used inside tmux and GNU screen.
+    "     " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
 let g:NERDTreeStatusline = -1
 let g:NERDTreeShowLineNumbers = -1
 
