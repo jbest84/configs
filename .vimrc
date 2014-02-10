@@ -24,6 +24,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Start maximized
 au GUIEnter * simalt ~x
 
+" Remove the toolbar
+set guioptions-=T
+
 " CoffeeScript Settings
 " Recompile .coffee on write
 "au BufWritePost *.coffee silent CoffeeMake!
