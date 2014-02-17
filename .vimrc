@@ -25,7 +25,6 @@ map <C-n> :NERDTreeToggle<CR>
 cabbrev w1 w!
 cabbrev w2 w
 
-
 " Start maximized
 au GUIEnter * simalt ~x
 
