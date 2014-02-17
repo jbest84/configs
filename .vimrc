@@ -21,6 +21,11 @@ let g:NERDTreeShowLineNumbers = -1
 " Toggle NERDTree with Control-n
 map <C-n> :NERDTreeToggle<CR>
 
+" Replace :w1 and :w2 common typos with just a write
+cabbrev w1 w!
+cabbrev w2 w
+
+
 " Start maximized
 au GUIEnter * simalt ~x
 
