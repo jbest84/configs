@@ -21,6 +21,10 @@ let g:NERDTreeShowLineNumbers = -1
 " Toggle NERDTree with Control-n
 map <C-n> :NERDTreeToggle<CR>
 
+" Disable beep and flash
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 " Replace :w1 and :w2 common typos with just a write
 cabbrev w1 w!
 cabbrev w2 w
