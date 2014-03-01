@@ -25,6 +25,9 @@ map <C-n> :NERDTreeToggle<CR>
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Fix backspace
+set backspace=2
+
 " Replace :w1 and :w2 common typos with just a write
 cabbrev w1 w!
 cabbrev w2 w
