@@ -1,11 +1,28 @@
+(require 'whitespace)
 (require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" .
-	       "http://marmalade-repo.org/packages/"))
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+
 (package-initialize)
-;(evil-mode 1)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (global-linum-mode t)
+
+(defun create-shell ()
+    "creates a shell with a given name"
+    (interactive);; "Prompt\n shell name:")
+    (let ((shell-name (read-string "shell name: " nil)))
+    (shell (concat "*" shell-name "*"))))
+
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+(setq whitespace-style '(face trailing tabs))
+
+(global-whitespace-mode t)
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
