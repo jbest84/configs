@@ -5,12 +5,23 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-
 (package-initialize)
+
+(setq default-directory "C:/code/mobile/")
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
+(add-hook 'css-mode-hook 'my-css-mode-hook)
+(add-hook 'less-css-mode-hook 'my-css-mode-hook)
+
+(defun my-css-mode-hook ()
+  (rainbow-mode 1))
+
 (global-linum-mode t)
+
+(require 'evil)
+(define-key evil-normal-state-map "\C-u" 'evil-scroll-up)
+(define-key evil-visual-state-map "\C-u" 'evil-scroll-up)
 
 (defun create-shell ()
     "creates a shell with a given name"
