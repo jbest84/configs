@@ -1,32 +1,26 @@
 " Pathogen plugin manager
 call pathogen#infect()
+set rtp+=$GOROOT/misc/vim
 
-" Have operations work with the system clipboard, no need for +
-set clipboard=unnamed
+" Hide toolbar
+set guioptions-=T
 
-set encoding=utf-8
-set fileencoding=utf-8
-set t_Co=256
+" Enable backspace
+set backspace=2
 
-if &term =~ '256color'
-    " Disable Background Color Erase (BCE) so that color schemes
-    "   " work properly when Vim is used inside tmux and GNU screen.
-    "     " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
+syntax enable
 
-let g:NERDTreeStatusline = -1
-let g:NERDTreeShowLineNumbers = -1
+" Syntastic
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+
+colorscheme xoria256
 
 " Toggle NERDTree with Control-n
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Disable beep and flash
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Fix backspace
-set backspace=2
 
 " Replace :w1 and :w2 common typos with just a write
 cabbrev w1 w!
@@ -35,29 +29,21 @@ cabbrev w2 w
 " Start maximized
 au GUIEnter * simalt ~x
 
-" Remove the toolbar
-set guioptions-=T
-
-" CoffeeScript Settings
-" Recompile .coffee on write
-"au BufWritePost *.coffee silent CoffeeMake!
-"au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+" netrw settings
+let g:netrw_banner = 0
+let g:netrw_keepdir = 0
+let g:netrw_liststyle = 1
+let g:netrw_sort_options = 'i'
 
 " Revert back to the old regex engine to fix broken plugins
 set regexpengine=1
-
-syntax enable
-" Solarized color scheme
-"set background=dark
-"colorscheme solarized
-
-colorscheme xoria256
 
 " Set ruler, also setup highlighting of line/column
 set ruler
 set cursorline
 set cursorcolumn
 
+" Diff settings
 set diffexpr=
 if &diff
     set columns=240
@@ -67,7 +53,7 @@ endif
 set relativenumber
 set number
 
-" Fold using markers {{{, }}}
+" Indent based folding
 set foldmethod=indent
 set foldlevelstart=99
 
@@ -104,6 +90,7 @@ set list
 set listchars=tab:\|\ 
 
 set autochdir
+set nocompatible
 
 " switch to directory of current file
 command! CD cd %:p:h
@@ -115,5 +102,3 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 endif
-
-nnoremap <F5> :GundoToggle<CR>
